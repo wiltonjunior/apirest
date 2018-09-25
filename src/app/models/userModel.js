@@ -1,5 +1,9 @@
-const mongoose = require('../../database');
+'use strict';
+
+module.exports = (app) => {
+
 const bcryty = require('bcryptjs');
+const mongoose = require('../../database/db');
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -29,6 +33,6 @@ UserSchema.pre('save', async function(next){
     next()
 })
 
-const User = mongoose.model('User', UserSchema);
+return  mongoose.model('User', UserSchema);
 
-module.exports = User;
+}
