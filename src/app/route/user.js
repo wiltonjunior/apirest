@@ -1,10 +1,11 @@
-'use strict';
 
 module.exports = (app) => {
 
-    const router = app.Router(); 
+    // const router = app.Router(); 
 
-    const user = require('../controllers/authController');
-    router.post("/users", user.save)
+    let user = app.controllers.authController;
+console.log(user.save)
+    app.post('/cara', user.save)
 
 }
+

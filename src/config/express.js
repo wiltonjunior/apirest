@@ -1,18 +1,22 @@
 const express = require('express');
+const consign = require('consign');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.set('port',3001)
+app.set('port',3000)
 
-app.get('/', (req, res) => {
-    res.send({ok: true});
-})
-
-require('../app/controllers/authController')(app);
-require('../app/route/user')(app);
+// require('../app/controllers/authController')(app);
+// require('../app/route/user')(app);
 //require('../app/controllers/projectController')(app);
+
+consign({cwd: 'app'})
+  .include('models')
+  .then('controllers')
+  .then('route')
+  .into(app)
+;
 
 module.exports = app;

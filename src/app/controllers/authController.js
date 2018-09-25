@@ -51,8 +51,9 @@ module.exports = (app) => {
             user,
             token: generaterToken({ id: user.id })
         });
-        
     })
 
+    return user;
 
 };
+        
