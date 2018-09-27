@@ -6,10 +6,10 @@ module.exports = (app) => {
 
     let controller = app.controllers.userController
 
-    app.post("/users",  controller.save);
-    app.get("/users",  controller.list);
-    app.get("/users/:id",  controller.search);
-    app.put("/users/:id",  controller.edit);
-    app.delete("/users/:id",  controller.delete);
+    app.post("/users", authorization, controller.save);
+    app.get("/users", authorization, controller.list);
+    app.get("/users/:id", authorization, controller.search);
+    app.put("/users/:id", authorization, controller.edit);
+    app.delete("/users/:id", authorization, controller.delete);
  
 }
